@@ -52,9 +52,16 @@ class Owner
   end
 
   def sell_pets
-    pets.each do |type, name_array|
-      name_array.each do |pet|
-        pet.mood = "nervous"
+    Cat.all.each do |cat|
+      if cat.owner == self 
+        cat.mood = "nervous"
+        cat.owner = nil 
+      end
+    end
+    Dog.all.each do |dog|
+      if dog.owner == self 
+        dog.mood = "nervous"
+        dog.owner = nil 
       end
     end
   end
